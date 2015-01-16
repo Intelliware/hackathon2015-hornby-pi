@@ -1,2 +1,6 @@
 target
 *.class
+.settings/org.eclipse.jdt.core.prefs
+dependency-reduced-pom.xml
+.settings/org.eclipse.jdt.core.prefs
+.classpath
