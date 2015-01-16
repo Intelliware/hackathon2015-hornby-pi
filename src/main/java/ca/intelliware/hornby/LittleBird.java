@@ -20,6 +20,8 @@ import org.apache.http.impl.client.HttpClients;
 
 
 public class LittleBird {
+	private static final String CHARSET_UTF_8 = "UTF-8";
+	private static final String MIME_APPLICATION_JSON = "application/json";
 	private static final String JSON_TEMPLATE = "{ \"uid\": \"%s\", \"video\": { \"data\": %s }, \"audio\": {} }";
 	private static final String DEFAULT_WEB_SERVICE_ENDPOINT = "http://192.168.0.224:9000/api/measurements";
 	private static final String DEFAULT_HEIGHT = "240";
@@ -62,7 +64,7 @@ public class LittleBird {
 			String json = String.format(JSON_TEMPLATE, uidOverride, diffSize);
 			HttpUriRequest request = RequestBuilder.put()
 				.setUri(uri)
-				.setEntity(new StringEntity(json, ContentType.create("application/json", "UTF-8")))
+				.setEntity(new StringEntity(json, ContentType.create(MIME_APPLICATION_JSON, CHARSET_UTF_8)))
 				.build();
 			CloseableHttpResponse response = (CloseableHttpResponse) httpClient.execute(request);
 			response.close();
